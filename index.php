@@ -1,314 +1,246 @@
+<?php
+include "functions/connect.php";
+$images_last = get_images_slider_last();
+$images = get_images_slider();
+?>
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta charset="utf-8"/>
-	<title></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link href='css/style.css' rel='stylesheet'/>
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-	<link rel="stylesheet" type="text/css" href="css/slimmenu.min.css">
-	<script src="src/js/jquery-1.12.0.min.js"></script>
-	<style>
-		body {
-			font-family: 'Lucida Sans Unicode', 'Lucida Console', sans-serif;
-			padding: 0;
-		}
-		a, a:active { text-decoration: none }
-	</style>
-	<style>
 
-		/* Swipe 2 required styles */
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>Electronics - Online Store</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="css/shop-homepage.css" rel="stylesheet">
+    </head>
 
-		.swipe {
-			overflow: hidden;
-			visibility: hidden;
-			position: relative;
-		}
-		.swipe-wrap {
-			overflow: hidden;
-			position: relative;
-		}
-		.swipe-wrap > div {
-			float:left;
-			width:100%;
-			position: relative;
-		}
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Menú</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="Electronics">
+                        <img class="img-rounded" src="files/main_images/logo.jpg" alt="Electronics">
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.php">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="about.php">Nosotros</a>
+                        </li>
+                        <li>
+                            <a href="products">Todos los productos</a>
+                        </li>
+                        <li>
+                            <a href="contact">Contacto</a>
+                        </li>
+                        <li>
+                            <a>
+                            </a>
+                        </li>
 
-		/* END required styles */
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="login.php">
+                                <button class="btn btn-sm btn-danger">
+                                    <span class="glyphicon glyphicon-log-in"></span> Acceder
+                                </button>
+                            </a>
+                        </li>
+                    </ul>
 
-	</style>
-</head>
-<body>
-	<div class="contenedor">	
-		<div class="head">
-			<div class="logo">
-				<img src="images/logo.jpg">
-			</div>
-			<div class="buscador">
-				<div class="flexsearch">
-					<div class="flexsearch--wrapper">
-						<form class="flexsearch--form" action="#" method="post">
-							<div class="flexsearch--input-wrapper">
-								<input class="flexsearch--input" type="search" placeholder="search">
-							</div>
-							<input class="flexsearch--submit" type="submit" value="&#10140;"/>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="telefono">
-				<img src="images/redes.jpg">
-			</div>
-			<div class="categorias">
-				<div class="ico">
-					<img src="images/Menu.png">
-				</div>
-				<div class="text">
-					<span><b>Categorías</b></span>
-				</div>
-			</div>
-			<div id="menu">
-				<ul class="slimmenu">
-					<li>
-						<a href="index.php">Inicio</a>
-					</li>
-					<li><a href="somos.html">Nosotros</a></li>
-					<li>
-						<a href="#">Productos</a>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
 
-					</li>
-					<li><a href="contacto.php">Contacto</a></li>
-					<li><a href="login.php">Acceder</a></li>
-				</ul>
+        <!-- Page Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="lead">Encuentra lo que deseas</p>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Buscar...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </span>
+                    </div>
+                    <p></p>
+                    <p class="lead">Categorias</p>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item clearfix">Electrónica
+                            <span class="pull-right">
+                                <button class="btn btn-xs btn-success">
+                                    <span class="glyphicon glyphicon-file"></span>
+                                </button>
+                            </span>
+                        </a>
 
-				<script src="src/js/jquery.slimmenu.js"></script>
-				<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script> -->
-				<script>
-					$('.slimmenu').slimmenu(
-					{
-						resizeWidth: '860',
-						collapserTitle: 'Main Menu',
-						animSpeed:'medium',
-						indentChildren: true,
-						childrenIndenter: '&raquo;'
-					});
-				</script>
-			</div>
+                        <a href="#" class="list-group-item clearfix">Telefonia
+                            <span class="pull-right">
+                                <button class="btn btn-xs btn-info">
+                                    <span class="glyphicon glyphicon-phone"></span>
+                                </button>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item clearfix">Computo
+                            <span class="pull-right">
+                                <button class="btn btn-xs btn-warning">
+                                    <span class="glyphicon glyphicon-file"></span>
+                                </button>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item clearfix">Audio
+                            <span class="pull-right">
+                                <button class="btn btn-xs btn-danger">
+                                    <div class="icons">
+                                        <span class="glyphicon glyphicon-headphones"></span>
+                                    </div>
+                                </button>
+                            </span>
+                        </a>
+                    </div>
+                    <p class="lead">Descuentos</p>
+                    <div class="list-group">
+                        <a href="#" class="list-group-item clearfix">Descuento al 10%
+                            <span class="pull-right">
+                                <button class="btn btn-xs btn-success">
+                                    <span class="glyphicon glyphicon-usd"></span>
+                                </button>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item clearfix">Descuento al 20%
+                            <span class="pull-right">
+                                <button class="btn btn-xs btn-info">
+                                    <span class="glyphicon glyphicon-usd"></span>
+                                </button>
+                            </span>
+                        </a>
+                    </div>
+                    <p class="lead">lo más vendido</p>
+                    <div class="thumbnail">
+                        <img class="img-rounded" src="images/product-1.jpg" alt="">
+                    </div>
+                    <div class="thumbnail">
+                        <img class="img-rounded" src="images/product-1.jpg" alt="">
+                    </div>
+                    <div class="thumbnail">
+                        <img class="img-rounded" src="images/product-1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row carousel-holder">
+                        <div class="col-md-12">
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <?php if(count($images_last) > 0 && count($images) > 0 ):?>
 
-			<div class="Lcategorias">
-				<div class="cat">
-					<ul>
-						<li><a href="#">TV/VIDEO</a></li>
-						<hr>
-						<li><a href="#">Mobiles</a></li>
-						<hr>
-						<li><a href="#">Computadoras</a></li>
-						<hr>
-						<li><a href="#">Electrodomesticos</a></li>
-						<hr>
-						<li><a href="#">Electrónica</a></li>
-					</ul>
-				</div>
-				<div class="encabezados">
-					Special
-				</div>
-				<div class="prodE">
-					<div class="imagen">
-						<img src="images/i1.png">	
-					</div>
-					<div class="descrip">
-						<p>
-							Iphone 6 S Diferentes colores y diferentes capacidades
-						</p>
-						<a href="producto1.html">Ver Más</a>
-					</div>
-				</div>
-				<div class="prodE">
-					<div class="imagen">
-						<div><img src="images/ip1.png" style="width:100%; padding:3px;"></div>
-					</div>
-					<div class="descrip">
-						<p>Ipad air diferentes colores y capacidades</p>
-						<a href="producto2.html">Ver Más</a>
-					</div>
-				</div>
-				<div class="prodE">
-					<div class="imagen">
-						<div><img src="images/m1.png" style="width:100%; padding:3px;"></div>
-					</div>
-					<div class="descrip">
-						<p>Macbook pro de 128gb diferentes colores</p>
-						<a href="producto4.html">Ver Más</a>
-					</div>
-				</div>
+                                    <?php foreach($images_last as $i):?>
+                                    <div class="item active">
+                                        <a href="#" title="<?php echo $i->id_product; ?>">
+                                            <img class="slide-image" src="files/slider/<?php echo $i->name; ?>" alt="">
+                                        </a>
+                                    </div>
+                                    <?php endforeach; ?>
 
-				<div class="encabezados">
-					Mejores ventas
-				</div>
-				<div class="prodE">
-					<div class="imagen">
-						<div><img src="images/tv1.png" style="width:100%; padding:3px;"></div>
-					</div>
-					<div class="descrip">
-						<p>Apple tv</p>
-						<a href="producto2.html">Ver Más</a>
-					</div>
-				</div>
-			</div>
-			<div class="body">
-				<div class="slider">
-					<div id='mySwipe' style='max-width:100%;margin:0 auto' class='swipe'>
-						<div class='swipe-wrap'>
-							<div><img src="images/i1.png" style="width:30%; padding:3px;" id="img1"></div>
-							<div><img src="images/ip1.png" style="width:35%; padding:3px;" id="img2"></div>
-							<div><img src="images/m1.png" style="width:40%; padding:3px;" id="img3"></div>
-							<div><img src="images/tv1.png" style="width:40%; padding:3px;" id="img4"></div>
-						</div>
-					</div>
-				</div>
-				<div class="Pprincipal">
-					<div class="descrip">
-						<p>
-							Iphone 6 S Diferentes colores y diferentes capacidades
-						</p>
-						<a href="producto1.html">Ver Más</a>
-					</div>
-					<div class="imagen">
-						<img src="images/i1.png" style="width:67.9%; margin-left:20%;">	
-					</div>
-				</div>
-				<div class="Pprincipal">
-					<div class="descrip">
-						<p>Ipad air diferentes colores y capacidades</p>
-						<a href="producto2.html">Ver Más</a>
-					</div>
-					<div class="imagen">
-						<div><img src="images/ip1.png" style="width:65%; padding:3px; margin-left:15%;"></div>
-					</div>
-				</div>
-				<div class="encabezados2">
-					Lastest
-				</div>
+                                    <?php foreach($images as $k):?>
+                                    <div class="item">
+                                        <a href="#" title="<?php echo $k->id_product; ?>">
+                                            <img class="slide-image" src="files/slider/<?php echo $k->name; ?>" alt="">
+                                        </a>
+                                    </div>
+                                    <?php endforeach; ?>
 
-				<div class="Tproducts">
-					<div class="imagen2">
-						<img src="images/i1.png" style="width:62%; margin-left:21%;">	
-					</div>
-					<div class="descrip2">
-						<p>Iphone 6 S difrentes colores y diferentes capacidades de memoria</p> 
-						<a href="producto1.html">Ver Más</a>
-					</div>
-				</div>
-				<div class="Tproducts"">
-					<div class="imagen2">
-						<div><img src="images/ip1.png" style="width:60%; padding:3px; margin-left:17%;"></div>
-					</div>
-					<div class="descrip2">
-						<p>Ipad air diferentes colores y capacidades</p>
-						<a href="producto2.html">Ver Más</a>
-					</div>
-				</div>
-				<div class="Tproducts">
-					<div class="imagen2">
-						<div><img src="images/m1.png" style="width:60%; padding:3px; margin-left:17%;"></div>
-					</div>
-					<div class="descrip2">
-						<p>Macbook pro de 128gb diferentes colores</p>
-						<a href="producto4.html">Ver Más</a>
-					</div>
-				</div>
+                                    <?php else: ?>
+                                    <div class="item active">
+                                        <img class="slide-image" src="files/slider/slide-image-default.png" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img class="slide-image" src="files/slider/slide-image-default.png" alt="">
+                                    </div>
+                                    <div class="item">
+                                        <img class="slide-image" src="files/slider/slide-image-default.png" alt="">
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <div class="thumbnail">
+                                <img src="files/products/product-image-default.png" alt="">
+                                <div class="caption">
+                                    <h4 class="pull-right">$99.99</h4>
+                                    <h4><a href="#">Titulo producto</a>
+                                    </h4>
+                                    <p>1234567890 124567890 1234567890 123456890</p>
+                                </div>
+                                <div class="ratings">
+                                    <p class="pull-right">
+                                        <button class="btn btn-xs btn-warning">VER</button>
+                                    </p>
+                                    <p>
+                                        &nbsp;
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
 
-				<div class="encabezados2">
-					Productos Destacados
-				</div>	
-				<div class="Tproducts">
-					<div class="imagen2">
-						<img src="images/i1.png" style="width:52.2%; margin-left:23%;">	
-					</div>
-					<div class="descrip2">
-						<p>Iphone 6 S difrentes colores y diferentes capacidades de memoria</p> 
-						<a href="producto1.html">Ver Más</a>
-					</div>
-				</div>
-				<div class="Tproducts">
-					<div class="imagen2">
-						<div><img src="images/tv1.png" style="width:50%; padding:3px; margin-left:24%;"></div>
-					</div>
-					<div class="descrip2">
-						<p>Apple tv</p>
-						<a href="producto2.html">Ver Más</a>
-					</div>
-				</div>
-				<div class="Tproducts">
-					<div class="imagen2">
-						<div><img src="images/m1.png" style="width:50%; padding:3px; margin-left:24%;"></div>	
-					</div>
-					<div class="descrip2">
-						<p>Macbook pro de 128gb diferentes colores</p>
-						<a href="producto4.html">Ver Más</a>
-					</div>
-				</div>
+        <div class="container">
+            <hr>
+            <!-- Footer -->
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Copyright &copy; Electronics Online Store 2016</p>
+                    </div>
+                </div>
+            </footer>
 
-			</div>	
-		</div>
-		<footer>
-			<div class="gg">
-				<div class="contenedor1">
-					<label>About</label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					</div>
-					<div class="contenedor1">
-						<label>Eventos</label>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.l</p>
-						</div>
-						<div class="h">
-							<hr>		
-						</div>
-						<div class="contenedor2">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-							consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</div>
-						<div class="contenedor3">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-							tempor incididunt ut labore et dolore magna aliqua. 
-						</div>
-						<div class="h" style="padding-bottom:20px; margin-top:10px;">
-							<hr>		
-						</div>
-					</div>	
-				</footer>
-				<script src='css/swipe.js'></script>
-				<script>
+        </div>
+        <!-- /.container -->
+        <!-- jQuery -->
+        <script src="js/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
 
-// pure JS
-var elem = document.getElementById('mySwipe');
-window.mySwipe = Swipe(elem, {
-	startSlide: 1,
-	auto: 2000,
-	continuous: true,
-	disableScroll: true,
-	stopPropagation: true,
-	callback: function(index, element) {},
-	transitionEnd: function(index, element) {}
-});
+    </body>
 
-// with jQuery
-// window.mySwipe = $('#mySwipe').Swipe().data('Swipe');
-
-</script>
-</body>
 </html>
